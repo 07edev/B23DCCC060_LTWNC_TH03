@@ -45,6 +45,30 @@ export async function getPublicPosts(filter: PostFilter = {}): Promise<Post[]> {
   return result;
 }
 
+export interface PostStats {
+  pending: number;
+  approved: number;
+  hidden: number;
+}
+
+/** Đếm số tin theo trạng thái kiểm duyệt. */
+export function getPostStats(): PostStats {
+  const stats: PostStats = { pending: 0, approved: 0, hidden: 0 };
+  for (const p of db.posts) stats[p.status] += 1;
+  return stats;
+}
+
+export const getPendingPosts = (): Post[] =>
+  db.posts.filter((p) => p.status === 'pending');
+
+/** Duyệt hoặc ẩn 1 tin đang chờ duyệt; trả false nếu không đổi được. */
+export function moderate(id: number, status: 'approved' | 'hidden'): boolean {
+  const post = db.posts.find((p) => p.id === id);
+  if (!post || post.status !== 'pending') return false;
+  post.status = status;
+  return true;
+}
+
 /** Lấy 1 tin công khai theo id; không công khai thì trả undefined. */
 export async function getPublicPost(id: number): Promise<Post | undefined> {
   return db.posts.find((p) => p.id === id && isPublic(p));
