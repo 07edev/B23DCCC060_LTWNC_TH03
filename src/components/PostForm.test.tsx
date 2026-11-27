@@ -54,7 +54,7 @@ describe('PostForm', () => {
     await user.type(screen.getByLabelText('Thông tin liên hệ'), 'sv01@ptit.edu.vn');
     await user.click(submitButton());
 
-    expect(await screen.findByText('Đã gửi tin, chờ kiểm duyệt')).toBeInTheDocument();
+    expect(await screen.findByRole('status')).toHaveTextContent('Đã gửi tin, chờ kiểm duyệt');
     expect(action).toHaveBeenCalledTimes(1);
     const formData = action.mock.calls[0][1];
     expect(formData.get('kind')).toBe('Nhặt được');
@@ -75,7 +75,7 @@ describe('PostForm', () => {
     await user.type(screen.getByLabelText('Tiêu đề'), 'Mất chìa khóa xe máy');
     await user.click(submitButton());
 
-    expect(await screen.findByText('Không có quyền')).toBeInTheDocument();
+    expect(await screen.findByRole('status')).toHaveTextContent('Không có quyền');
     expect(screen.getByLabelText('Tiêu đề')).toHaveValue('Mất chìa khóa xe máy');
     expect(screen.getByLabelText('Loại liên hệ')).toHaveValue('SĐT');
   });

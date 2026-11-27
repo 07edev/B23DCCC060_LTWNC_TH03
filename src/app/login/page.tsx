@@ -18,9 +18,12 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
   const callbackUrl = firstParam(sp.callbackUrl) || '/my-posts';
 
   return (
-    <section>
-      <h1>Đăng nhập</h1>
-      <LoginForm callbackUrl={callbackUrl} />
-    </section>
+    <div className="center-page">
+      <section className="card auth-card">
+        <h1>Đăng nhập</h1>
+        <p className="subtitle">Đăng nhập để đăng tin và quản lý tin của bạn</p>
+        <LoginForm callbackUrl={callbackUrl} />
+      </section>
+    </div>
   );
 }

@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { toPostInput, today, validatePost, type PostInput } from './post-validate';
+import { toPostInput, today, validatePost } from './post-validate';
+import type { PostInput } from './post-validate';
 
 const valid: PostInput = {
   title: 'Mất tai nghe không dây',

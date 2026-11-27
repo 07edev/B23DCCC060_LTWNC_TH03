@@ -1,5 +1,6 @@
 import { db } from './db';
-import { isCategory, isKind, isPlace, type PostInput } from './post-validate';
+import { isCategory, isKind, isPlace } from './post-validate';
+import type { PostInput } from './post-validate';
 import type { Post, PostStatus } from '../types';
 
 export interface MyPostsPage {

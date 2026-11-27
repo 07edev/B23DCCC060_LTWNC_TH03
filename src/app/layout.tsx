@@ -20,6 +20,12 @@ export default function RootLayout({
         <Providers>
           <Header />
           <main className="container">{children}</main>
+          <footer className="footer">
+            <div className="container">
+              <span>© 2026 PTIT Found – Tìm đồ thất lạc trong trường PTIT</span>
+              <span>Nhặt được đồ? Hãy đăng tin để trả lại chủ nhân.</span>
+            </div>
+          </footer>
         </Providers>
       </body>
     </html>

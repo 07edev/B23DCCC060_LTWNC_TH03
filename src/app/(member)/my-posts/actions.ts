@@ -4,7 +4,8 @@ import { revalidatePath } from 'next/cache';
 import { auth } from '@/auth';
 import { resolvePost, submitPost } from '@/lib/my-posts';
 import { can } from '@/lib/permissions';
-import { toPostInput, validatePost, type PostFormState } from '@/lib/post-validate';
+import { toPostInput, validatePost } from '@/lib/post-validate';
+import type { PostFormState } from '@/lib/post-validate';
 
 export async function createPostAction(
   _prevState: PostFormState,

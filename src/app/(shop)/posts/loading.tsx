@@ -1,3 +1,8 @@
 export default function Loading() {
-  return <p>Đang tải tin đăng...</p>;
+  return (
+    <div className="loading" role="status">
+      <span className="spinner" aria-hidden="true" />
+      <p>Đang tải tin đăng...</p>
+    </div>
+  );
 }
